@@ -45,6 +45,14 @@ const Basecamp = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    gunung_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'gunung',
+        key: 'id',
+      },
+      allowNull: false,
+    },
   },
   {
     timestamps: true,

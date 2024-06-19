@@ -1,6 +1,7 @@
 import multer from 'multer'
 import Gunung from '../models/Gunung.js'
 import path from 'path'
+import Basecamp from '../models/Basecamp.js'
 // Setup multer for file upload
 const storage = multer.memoryStorage()
 const upload = multer({ storage: storage })
@@ -35,9 +36,9 @@ export const createGunung = async (req, res) => {
       kode_gunung,
       nama_gunung,
       deskripsi,
-      basecamp_id,
       province,
       kota,
+      maps
     } = req.body
 
     let fileName = ''
@@ -68,9 +69,9 @@ export const createGunung = async (req, res) => {
       deskripsi,
       image: fileName,
       url: url,
-      basecamp_id,
       province,
       kota,
+      maps
     })
 
     res.status(201).json(newArticle)
@@ -87,9 +88,9 @@ export const updateGunung = async (req, res) => {
       kode_gunung,
       nama_gunung,
       deskripsi,
-      basecamp_id,
       province,
       kota,
+      maps
     } = req.body
     const gunung = await Gunung.findByPk(id)
 
@@ -120,9 +121,9 @@ export const updateGunung = async (req, res) => {
       gunung.deskripsi = deskripsi
       gunung.image = fileName
       gunung.url = url
-      gunung.basecamp_id = basecamp_id
       gunung.province = province
       gunung.kota = kota
+      gunung.maps = maps
       await gunung.save()
       res.status(200).json(gunung)
     } else {

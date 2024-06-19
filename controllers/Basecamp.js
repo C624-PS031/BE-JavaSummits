@@ -1,5 +1,6 @@
 import path from 'path'
 import Basecamp from '../models/Basecamp.js'
+import Gunung from '../models/Gunung.js'
 
 // Get all basecamps
 export const getAllBasecamp = async (req, res) => {
@@ -15,7 +16,7 @@ export const getAllBasecamp = async (req, res) => {
 export const getBasecampById = async (req, res) => {
   try {
     const { id } = req.params
-    const basecamp = await Basecamp.findByPk(id)
+    const basecamp = await Basecamp.findByPk(id, { include: Gunung })
     if (basecamp) {
       res.status(200).json(basecamp)
     } else {
@@ -38,6 +39,7 @@ export const createBasecamp = async (req, res) => {
       jam_tutup,
       provinsi,
       rating,
+      gunung_id
     } = req.body
 
     let fileName = ''
@@ -73,6 +75,7 @@ export const createBasecamp = async (req, res) => {
       rating,
       image: fileName,
       url: url,
+      gunung_id
     })
 
     res.status(201).json(newBasecamp)
@@ -94,6 +97,7 @@ export const updateBasecamp = async (req, res) => {
       jam_tutup,
       provinsi,
       rating,
+      gunung_id
     } = req.body
 
     const basecamp = await Basecamp.findByPk(id)
@@ -134,6 +138,7 @@ export const updateBasecamp = async (req, res) => {
       rating,
       image: fileName,
       url: url,
+      gunung_id
     })
 
     res.status(200).json(basecamp)

@@ -21,14 +21,7 @@ const Gunung = sequelize.define(
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    basecamp_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'basecamp',
-        key: 'id',
-      },
-      allowNull: false,
-    },
+    
     province: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -38,6 +31,10 @@ const Gunung = sequelize.define(
       allowNull: false,
     },
     url: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    maps: {
       type: DataTypes.STRING,
       allowNull: true,
     },

@@ -26,6 +26,7 @@ import {
   deleteArtikel,
 } from '../controllers/Artikel.js'
 
+
 import {
   getAllGunung,
   getGunungById,
@@ -41,6 +42,7 @@ import {
   deleteBasecamp,
 } from '../controllers/Basecamp.js'
 const router = express.Router()
+
 
 // // users
 // router.get('/users', getUsers) // done
